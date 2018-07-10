@@ -1,10 +1,8 @@
-import _ from 'lodash';
 import koa from 'koa';
 import Router = require('koa-router');
 import ProcessConatiner from './ProcessContainer';
 import { validate } from './Middleware';
 
-const config = require('../config');
 const glob = require('glob');
 const path = require('path');
 
@@ -12,20 +10,24 @@ import views = require('koa-views');
 
 export interface ServerOptions {
   port: number;
-  controllers: Array<any>;
+  controllerPath: string;
+  viewPath: string;
+  controllers?: Array<any>;
 }
 
-export default class Server {
+export class BrickServer {
   protected koa: any = new koa();
-  constructor (config?: ServerOptions) {
+  protected config: ServerOptions;
+  constructor (config: ServerOptions) {
+    this.config = config;
     // load views
     this.koa
-      .use(views(__dirname + '/../../views', {map: {html: 'underscore'}}));
+      .use(views(config.viewPath, {map: {html: 'underscore'}}));
     this.implementControllers();
   }
   implementControllers (ctrls?: Array<any>) {
     const ctrlsPath = glob.sync(
-      path.normalize(__dirname + '/../controllers/*{.js,.ts}'))
+      path.normalize(this.config.controllerPath + '/*{.js,.ts}'))
       .filter((file: string) => {
         const dtsExtension = file.substring(file.length - 5, file.length);
         return ['.js', '.ts'].indexOf(path.extname(file)) !== -1 && dtsExtension !== '.d.ts';
@@ -58,6 +60,6 @@ export default class Server {
   }
   start () {
     this.loadRouter();
-    this.koa.listen(config.port);
+    this.koa.listen(this.config.port);
   }
 }

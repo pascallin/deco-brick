@@ -1,9 +1,14 @@
-import { Repository } from '../cores/Repository';
-import { md5 } from '../deps/utils';
+import { Repository } from '../../src/index';
+import { KnexClient } from '../libs/knex';
 
-export default class Service extends Repository {
+import { md5 } from '../libs/utils';
+
+export = class Service extends Repository {
   constructor() {
-    super('user');
+    super({
+      knexClient: KnexClient,
+      name: 'user'
+    });
   }
   async addUser(username: string, password: string): Promise<number | string> {
     const result = await this.upsert({
@@ -17,4 +22,4 @@ export default class Service extends Repository {
     if (record.password == md5(password)) return true;
     return false;
   }
-}
+};

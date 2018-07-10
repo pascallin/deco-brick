@@ -1,15 +1,23 @@
 {
-  "name": "nodejs",
-  "version": "1.0.0",
-  "description": "",
+  "name": "brick",
+  "version": "0.0.1",
+  "description": "A decorator style http server with koa",
   "main": "index.js",
   "scripts": {
-    "tsc-watch": "tsc --watch",
-    "debug": "nodemon --watch ./dist ./dist/index.js",
-    "start": "node ./dist/index.js"
+    "tsc-watch": "tsc --watch"
   },
-  "author": "",
+  "author": {
+    "name": "pascal_lin",
+    "email": "pascal_lin@foxmail.com"
+  },
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pascallin/brick.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pascallin/brick.git/issues"
+  },
   "dependencies": {
     "@koa/cors": "^2.2.1",
     "glob": "^7.1.2",
@@ -41,5 +49,6 @@
     "@types/uuid": "^3.4.3",
     "tslint": "^5.10.0",
     "typescript": "^2.8.3"
-  }
+  },
+  "typings": "index.d.ts"
 }

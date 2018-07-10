@@ -1,4 +1,4 @@
-import { GET, POST, PUT, DEL, Validate, Render } from '../cores/Decorator';
+import { GET, POST, PUT, DEL, Validate, Render } from '../../src/index';
 import Joi = require('joi');
 
 class Controller {
