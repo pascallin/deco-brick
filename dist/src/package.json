@@ -1,6 +1,6 @@
 {
   "name": "deco-brick",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A decorator style http server with koa",
   "main": "index.js",
   "scripts": {
@@ -13,10 +13,10 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pascallin/brick.git"
+    "url": "https://github.com/pascallin/deco-brick.git"
   },
   "bugs": {
-    "url": "https://github.com/pascallin/brick.git/issues"
+    "url": "https://github.com/pascallin/deco-brick.git/issues"
   },
   "dependencies": {
     "@koa/cors": "^2.2.1",
