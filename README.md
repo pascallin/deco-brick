@@ -1,11 +1,7 @@
-# brick
-decoration style koa server with typescript
- 
-## notes
+[TOC]
 
-- use `koa-views` and `underscore` to render views
-- use `koa-router` for routes
-- the closest decorator in controller method must be one of `GET, POST, PUT, DEL`
+# deco-brick
+decoration style koa server with typescript
 
 ## Usage
 
@@ -22,7 +18,7 @@ brick server config as blow:
 
 example
 ```
-import { BrickServer } from 'brick';
+import { BrickServer } from 'deco-brick';
 const app = new BrickServer({
   port: 3000,
   controllerPath: __dirname + '/controllers',
@@ -38,7 +34,7 @@ import errorHandler = require('./middlewares/error-handler');
 import bodyParser = require('koa-bodyparser');
 const session = require('koa-session');
 const cors = require('@koa/cors');
-import { BrickServer } from 'brick';
+import { BrickServer } from 'deco-brick';
 
 class App extends BrickServer {
   start() {
@@ -67,6 +63,18 @@ const app = new App({
 });
 app.start();
 ```
+
+### Decorators
+
+#### GET, POST, PUT, DEL
+The closest decorator in controller method must be one of `GET, POST, PUT, DEL`.
+Using `koa-router` for routes, you can use `koa-router` path style with `GET, POST, PUT, DEL` decorator.
+
+#### Validate
+The `Validate` decorator use `joi` to validate params. All `ctx.params`,`ctx.request.query` and `ctx.request.body` data are in `ctx.params` after validate.
+
+#### Render
+Using `koa-views` and `underscore` to render views in `viewPath` you set.
 
 ### Controller
 A controler demo as below:
