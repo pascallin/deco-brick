@@ -17,6 +17,7 @@ const ProcessContainer_1 = __importDefault(require("./ProcessContainer"));
 const Middleware_1 = require("./Middleware");
 const glob = require('glob');
 const path = require('path');
+const chalk = require('chalk');
 const views = require("koa-views");
 class BrickServer {
     constructor(config) {
@@ -59,6 +60,7 @@ class BrickServer {
     start() {
         this.loadRouter();
         this.koa.listen(this.config.port);
+        console.log(chalk.green(`deco-brcik server is listing ${this.config.port}`));
     }
 }
 exports.BrickServer = BrickServer;

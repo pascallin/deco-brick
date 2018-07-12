@@ -1,6 +1,6 @@
 {
   "name": "deco-brick",
-  "version": "0.0.4",
+  "version": "0.1.1",
   "description": "A decorator style http server with koa",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@koa/cors": "^2.2.1",
+    "chalk": "^2.4.1",
     "glob": "^7.1.2",
     "ioredis": "^3.2.2",
     "joi": "^13.3.0",
