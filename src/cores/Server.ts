@@ -5,6 +5,7 @@ import { validate } from './Middleware';
 
 const glob = require('glob');
 const path = require('path');
+const chalk = require('chalk');
 
 import views = require('koa-views');
 
@@ -61,5 +62,6 @@ export class BrickServer {
   start () {
     this.loadRouter();
     this.koa.listen(this.config.port);
+    console.log(chalk.green(`deco-brcik server is listing ${this.config.port}`));
   }
 }
