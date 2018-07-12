@@ -3,6 +3,17 @@
 # deco-brick
 decoration style koa server with typescript
 
+## Quick start
+
+There is a scaffold for deco-brick
+```
+npm i -g deco-brick-cli
+deco-brick-cli init <project>
+cd <project> && npm i
+tsc
+node <project>/dist/index.js
+```
+
 ## Usage
 
 ### BrickServer
