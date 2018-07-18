@@ -121,6 +121,5 @@ export = Controller;
 ## What Next?
 - convinent services
   - repository
-  - grpc 
   - etc...
 - plugable controller
