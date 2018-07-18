@@ -5,8 +5,8 @@ const errorHandler = require("./middlewares/error-handler");
 const bodyParser = require("koa-bodyparser");
 const session = require('koa-session');
 const cors = require('@koa/cors');
-const index_1 = require("../src/index");
-class App extends index_1.BrickServer {
+const __1 = require("..");
+class App extends __1.BrickServer {
     start() {
         // load body parse
         this.koa.use(bodyParser({
@@ -27,7 +27,7 @@ class App extends index_1.BrickServer {
 const app = new App({
     port: 3000,
     controllerPath: __dirname + '/controllers',
-    viewPath: __dirname + '/../../views'
+    viewPath: __dirname + '/views'
 });
 app.start();
 //# sourceMappingURL=index.js.map

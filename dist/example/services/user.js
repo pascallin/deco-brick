@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const index_1 = require("../../src/index");
+const index_1 = require("../../index");
 const knex_1 = require("../libs/knex");
 const utils_1 = require("../libs/utils");
 module.exports = class Service extends index_1.Repository {

@@ -16,7 +16,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const index_1 = require("../../src/index");
+const __1 = require("../..");
 const Joi = require("joi");
 class Controller {
     get(ctx) {
@@ -36,24 +36,24 @@ class Controller {
     }
 }
 __decorate([
-    index_1.GET('/'),
+    __1.GET('/'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], Controller.prototype, "get", null);
 __decorate([
-    index_1.Render('index'),
-    index_1.GET('/view'),
+    __1.Render('index'),
+    __1.GET('/view'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], Controller.prototype, "page", null);
 __decorate([
-    index_1.Validate({
+    __1.Validate({
         username: Joi.string().required(),
         password: Joi.string().required(),
     }),
-    index_1.POST('/login'),
+    __1.POST('/login'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
