@@ -20,7 +20,7 @@ brick server config as blow:
 ```
 {
   port: 3000,                         // koa server port
-  controllerPath: PATH_TO_CONTROLLER, // controller path
+  controllerPath: PATH_TO_CONTROLLER, // controller path, string or array
   viewPath: PATH_TO_VIEWS             // html files path
 }
 ```
@@ -119,5 +119,4 @@ export = Controller;
 ## What Next?
 - convinent services
   - repository
-  - etc...
 - plugable controller

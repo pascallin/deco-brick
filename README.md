@@ -119,5 +119,4 @@ export = Controller;
 ## What Next?
 - convinent services
   - repository
-  - etc...
 - plugable controller
