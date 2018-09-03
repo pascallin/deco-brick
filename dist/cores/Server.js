@@ -29,11 +29,17 @@ class BrickServer {
         this.implementControllers();
     }
     implementControllers(ctrls) {
-        const ctrlsPath = glob.sync(path.normalize(this.config.controllerPath + '/*{.js,.ts}'))
-            .filter((file) => {
-            const dtsExtension = file.substring(file.length - 5, file.length);
-            return ['.js', '.ts'].indexOf(path.extname(file)) !== -1 && dtsExtension !== '.d.ts';
-        });
+        if (typeof this.config.controllerPath === 'string') {
+            this.config.controllerPath = [this.config.controllerPath];
+        }
+        let ctrlsPath = [];
+        for (const groupPath of this.config.controllerPath) {
+            ctrlsPath = glob.sync(path.normalize(groupPath + '/*{.js,.ts}'))
+                .filter((file) => {
+                const dtsExtension = file.substring(file.length - 5, file.length);
+                return ['.js', '.ts'].indexOf(path.extname(file)) !== -1 && dtsExtension !== '.d.ts';
+            });
+        }
         for (const p of ctrlsPath) {
             require(p);
         }

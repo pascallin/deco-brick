@@ -26,7 +26,7 @@ class App extends __1.BrickServer {
 }
 const app = new App({
     port: 3000,
-    controllerPath: __dirname + '/controllers',
+    controllerPath: [__dirname + '/controllers', __dirname + '/controllers/admin'],
     viewPath: __dirname + '/views'
 });
 app.start();
