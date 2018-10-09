@@ -5,9 +5,7 @@ export function validate (schema: object) {
   return async (ctx: any, next: any) => {
     try {
       if (schema) {
-        const params = _.merge(
-        ctx.params, ctx.request.query, ctx.request.body
-        );
+        const params = _.merge(ctx.params, ctx.request.query, ctx.request.body);
         ctx.params = await validatePromise(params, schema);
       }
     } catch (e) {

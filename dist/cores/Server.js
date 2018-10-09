@@ -19,13 +19,19 @@ const glob = require('glob');
 const path = require('path');
 const chalk = require('chalk');
 const views = require("koa-views");
+const bodyParser = require("koa-bodyparser");
 class BrickServer {
     constructor(config) {
         this.koa = new koa_1.default();
         this.config = config;
+        // load body parse
+        this.koa.use(bodyParser({
+            onerror: function (err, ctx) {
+                ctx.throw('body parse error', 422);
+            }
+        }));
         // load views
-        this.koa
-            .use(views(config.viewPath, { map: { html: 'underscore' } }));
+        this.koa.use(views(config.viewPath, { map: { html: 'underscore' } }));
         this.implementControllers();
     }
     implementControllers(ctrls) {
@@ -34,11 +40,12 @@ class BrickServer {
         }
         let ctrlsPath = [];
         for (const groupPath of this.config.controllerPath) {
-            ctrlsPath = glob.sync(path.normalize(groupPath + '/*{.js,.ts}'))
+            const ctrls = glob.sync(path.normalize(groupPath + '/*{.js,.ts}'))
                 .filter((file) => {
                 const dtsExtension = file.substring(file.length - 5, file.length);
                 return ['.js', '.ts'].indexOf(path.extname(file)) !== -1 && dtsExtension !== '.d.ts';
             });
+            ctrlsPath = ctrlsPath.concat(ctrls);
         }
         for (const p of ctrlsPath) {
             require(p);

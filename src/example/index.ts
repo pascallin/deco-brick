@@ -1,7 +1,6 @@
 import log = require('./middlewares/log');
 import errorHandler = require('./middlewares/error-handler');
 
-import bodyParser = require('koa-bodyparser');
 const session = require('koa-session');
 const cors = require('@koa/cors');
 
@@ -9,12 +8,6 @@ import { BrickServer } from '..';
 
 class App extends BrickServer {
   start() {
-    // load body parse
-    this.koa.use(bodyParser({
-      onerror: function (err, ctx) {
-        ctx.throw('body parse error', 422);
-      }
-    }));
     // load cors
     this.koa.use(cors());
     // load session

@@ -8,6 +8,7 @@ const path = require('path');
 const chalk = require('chalk');
 
 import views = require('koa-views');
+import bodyParser = require('koa-bodyparser');
 
 export interface ServerOptions {
   port: number;
@@ -21,23 +22,29 @@ export class BrickServer {
   protected config: ServerOptions;
   constructor (config: ServerOptions) {
     this.config = config;
+    // load body parse
+    this.koa.use(bodyParser({
+      onerror: function (err, ctx) {
+        ctx.throw('body parse error', 422);
+      }
+    }));
     // load views
-    this.koa
-      .use(views(config.viewPath, {map: {html: 'underscore'}}));
+    this.koa.use(views(config.viewPath, {map: {html: 'underscore'}}));
     this.implementControllers();
   }
   implementControllers (ctrls?: Array<any>) {
     if (typeof this.config.controllerPath === 'string') {
       this.config.controllerPath = [ this.config.controllerPath ];
     }
-    let ctrlsPath = [];
+    let ctrlsPath: string[] = [];
     for (const groupPath of this.config.controllerPath) {
-      ctrlsPath = glob.sync(
+      const ctrls = glob.sync(
         path.normalize(groupPath + '/*{.js,.ts}'))
         .filter((file: string) => {
           const dtsExtension = file.substring(file.length - 5, file.length);
           return ['.js', '.ts'].indexOf(path.extname(file)) !== -1 && dtsExtension !== '.d.ts';
         });
+        ctrlsPath = ctrlsPath.concat(ctrls);
     }
     for (const p of ctrlsPath) {
       require(p);
