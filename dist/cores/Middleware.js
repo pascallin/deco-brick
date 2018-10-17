@@ -19,7 +19,7 @@ function validate(schema) {
             }
         }
         catch (e) {
-            ctx.throw(e, 405);
+            ctx.throw(405, e.message);
         }
         yield next();
     });

@@ -9,7 +9,7 @@ export function validate (schema: object) {
         ctx.params = await validatePromise(params, schema);
       }
     } catch (e) {
-    ctx.throw(e, 405);
+      ctx.throw(405, e.message);
     }
     await next();
   };
