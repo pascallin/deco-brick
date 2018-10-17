@@ -19,7 +19,8 @@ function validate(schema) {
             }
         }
         catch (e) {
-            ctx.throw(405, e.message);
+            ctx.status = 400;
+            ctx.throw(e.message);
         }
         yield next();
     });
