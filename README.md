@@ -115,8 +115,3 @@ class Controller {
 
 export = Controller;
 ```
-
-## What Next?
-- convinent services
-  - repository
-- plugable controller
