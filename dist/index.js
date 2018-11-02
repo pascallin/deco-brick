@@ -4,6 +4,5 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./cores/Decorator"));
-__export(require("./cores/KnexRepository"));
 __export(require("./cores/Server"));
 //# sourceMappingURL=index.js.map

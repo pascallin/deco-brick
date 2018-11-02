@@ -7,15 +7,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const index_1 = require("../../index");
-const knex_1 = require("../libs/knex");
+const KnexRepository_1 = require("../libs/KnexRepository");
 const utils_1 = require("../libs/utils");
-module.exports = class Service extends index_1.Repository {
+module.exports = class Service extends KnexRepository_1.Repository {
     constructor() {
-        super({
-            knexClient: knex_1.KnexClient,
-            name: 'user'
-        });
+        super('user');
     }
     addUser(username, password) {
         return __awaiter(this, void 0, void 0, function* () {

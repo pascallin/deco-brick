@@ -1,14 +1,9 @@
-import { Repository } from '../../index';
-import { KnexClient } from '../libs/knex';
-
+import { Repository } from '../libs/KnexRepository';
 import { md5 } from '../libs/utils';
 
 export = class Service extends Repository {
   constructor() {
-    super({
-      knexClient: KnexClient,
-      name: 'user'
-    });
+    super('user');
   }
   async addUser(username: string, password: string): Promise<number | string> {
     const result = await this.upsert({

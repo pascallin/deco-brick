@@ -45,4 +45,4 @@ const config = {
 };
 const env = process.env.NODE_ENV == 'production' ? 'prod' : 'dev';
 module.exports = config[env];
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=config.js.map
