@@ -2,7 +2,6 @@ import koa from 'koa';
 import Router = require('koa-router');
 import ProcessConatiner from './ProcessContainer';
 import { validate } from './Middleware';
-
 const glob = require('glob');
 const path = require('path');
 const chalk = require('chalk');
@@ -55,18 +54,21 @@ export class BrickServer {
     const router = new Router();
     for (const process of container.getProcess()) {
       const { type, path, action, target, view } = process;
-      const beforeMiddlewares = process.beforeMiddlewares || [];
-      const afterMiddlewares = process.afterMiddlewares || [];
+      let beforeMiddlewares = process.beforeMiddlewares || [];
+      beforeMiddlewares = beforeMiddlewares.reverse();
+      let afterMiddlewares = process.afterMiddlewares || [];
+      afterMiddlewares = afterMiddlewares.reverse();
       router[type](path,
         validate(process.validate),
         ...beforeMiddlewares,
-        async (ctx: any) => {
+        async (ctx: any, next: any) => {
           const data = await new target()[action](ctx);
           if (view) {
             await ctx.render(view, data);
           } else {
             ctx.body = data;
           }
+          await next();
         },
         ...afterMiddlewares);
     }

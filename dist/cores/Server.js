@@ -56,9 +56,11 @@ class BrickServer {
         const router = new Router();
         for (const process of container.getProcess()) {
             const { type, path, action, target, view } = process;
-            const beforeMiddlewares = process.beforeMiddlewares || [];
-            const afterMiddlewares = process.afterMiddlewares || [];
-            router[type](path, Middleware_1.validate(process.validate), ...beforeMiddlewares, (ctx) => __awaiter(this, void 0, void 0, function* () {
+            let beforeMiddlewares = process.beforeMiddlewares || [];
+            beforeMiddlewares = beforeMiddlewares.reverse();
+            let afterMiddlewares = process.afterMiddlewares || [];
+            afterMiddlewares = afterMiddlewares.reverse();
+            router[type](path, Middleware_1.validate(process.validate), ...beforeMiddlewares, (ctx, next) => __awaiter(this, void 0, void 0, function* () {
                 const data = yield new target()[action](ctx);
                 if (view) {
                     yield ctx.render(view, data);
@@ -66,6 +68,7 @@ class BrickServer {
                 else {
                     ctx.body = data;
                 }
+                yield next();
             }), ...afterMiddlewares);
         }
         this.koa.use(router.routes()).use(router.allowedMethods());
