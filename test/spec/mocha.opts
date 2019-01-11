@@ -1,0 +1,4 @@
+--reporter dot
+--bail
+--ui bdd
+--require chai
