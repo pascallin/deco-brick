@@ -1,7 +1,14 @@
-import { GET, POST, PUT, DEL, Validate, Render } from '../..';
+import { GET, POST, PUT, DEL, Validate, Render, BeforeMiddleware, AfterMiddleware } from '../..';
 import Joi = require('joi');
 
+import { m1, m2, m3, m4 } from '../middlewares/middleware';
+
 class Controller {
+
+  @BeforeMiddleware(m1())
+  @BeforeMiddleware(m2())
+  @AfterMiddleware(m3())
+  @AfterMiddleware(m4())
   @GET('/')
   async get (ctx: any) {
     return await Promise.resolve({ message: 'hello world' });

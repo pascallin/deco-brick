@@ -23,4 +23,5 @@ const app = new App({
     viewPath: __dirname + '/../../views'
 });
 app.start();
+exports.default = app;
 //# sourceMappingURL=index.js.map

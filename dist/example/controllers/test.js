@@ -18,6 +18,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 const __1 = require("../..");
 const Joi = require("joi");
+const middleware_1 = require("../middlewares/middleware");
 class Controller {
     get(ctx) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -36,6 +37,10 @@ class Controller {
     }
 }
 __decorate([
+    __1.BeforeMiddleware(middleware_1.m1()),
+    __1.BeforeMiddleware(middleware_1.m2()),
+    __1.AfterMiddleware(middleware_1.m3()),
+    __1.AfterMiddleware(middleware_1.m4()),
     __1.GET('/'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
