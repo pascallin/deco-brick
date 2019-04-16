@@ -1,10 +1,12 @@
 {
   "name": "deco-brick",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A decorator style http server with koa",
   "main": "index.js",
   "scripts": {
-    "tsc-watch": "tsc --watch"
+    "tsc-watch": "tsc --watch",
+    "test:spec": "mocha -r ts-node/register test/**/*.spec.js",
+    "test:e2e": "nightwatch -c ./test/e2e/nightwatch.config.js"
   },
   "author": {
     "name": "pascal_lin",
@@ -22,9 +24,7 @@
     "@koa/cors": "^2.2.1",
     "chalk": "^2.4.1",
     "glob": "^7.1.2",
-    "ioredis": "^3.2.2",
-    "joi": "^13.3.0",
-    "knex": "^0.14.6",
+    "joi": "^14.3.1",
     "koa": "^2.5.1",
     "koa-bodyparser": "^4.2.1",
     "koa-multer": "^1.0.2",
@@ -32,9 +32,7 @@
     "koa-session": "^5.8.1",
     "koa-views": "^6.1.4",
     "lodash": "^4.17.10",
-    "mysql": "^2.15.0",
     "reflect-metadata": "^0.1.12",
-    "underscore": "^1.9.1",
     "uuid": "^3.2.1"
   },
   "devDependencies": {
@@ -46,8 +44,14 @@
     "@types/koa-router": "^7.0.28",
     "@types/koa-views": "^2.0.3",
     "@types/lodash": "^4.14.109",
-    "@types/node": "^10.1.4",
+    "@types/node": "^10.14.4",
     "@types/uuid": "^3.4.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.0",
+    "mocha": "^5.2.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
+    "ts-node": "^7.0.1",
     "tslint": "^5.10.0",
     "typescript": "^2.8.3"
   },

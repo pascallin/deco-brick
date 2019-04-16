@@ -27,6 +27,9 @@ class BrickServer {
         // load body parse
         this.koa.use(bodyParser({
             onerror: function (err, ctx) {
+                if (err) {
+                    ctx.throw(err);
+                }
                 ctx.throw('body parse error', 422);
             }
         }));

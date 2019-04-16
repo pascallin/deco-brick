@@ -2,9 +2,9 @@ declare enum Method {
     GET = "get",
     POST = "post",
     PUT = "put",
-    DEL = "delete",
+    DEL = "delete"
 }
-interface Process {
+declare interface Process {
     type: Method;
     path: string;
     validate: object;
