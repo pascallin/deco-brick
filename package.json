@@ -1,12 +1,10 @@
 {
   "name": "deco-brick",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "A decorator style http server with koa",
   "main": "index.js",
   "scripts": {
-    "tsc-watch": "tsc --watch",
-    "test:spec": "mocha -r ts-node/register test/**/*.spec.js",
-    "test:e2e": "nightwatch -c ./test/e2e/nightwatch.config.js"
+    "tsc-watch": "tsc --watch"
   },
   "author": {
     "name": "pascal_lin",
@@ -33,6 +31,7 @@
     "koa-views": "^6.1.4",
     "lodash": "^4.17.10",
     "reflect-metadata": "^0.1.12",
+    "underscore": "^1.9.1",
     "uuid": "^3.2.1"
   },
   "devDependencies": {
