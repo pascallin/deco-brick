@@ -1,15 +1,9 @@
 import ProcessConatiner from './ProcessContainer';
 import 'reflect-metadata';
+import { Method } from './Method';
 
 const pathMetadataKey = Symbol('path');
 const methodMetadataKey = Symbol('method');
-
-enum Method {
-  GET = 'get',
-  POST = 'post',
-  PUT = 'put',
-  DEL = 'delete',
-}
 
 function implementProcess(method: Method, path: string, target: any, propertyKey: string, descriptor: PropertyDescriptor) {
   Reflect.defineMetadata(methodMetadataKey, method, target, propertyKey);

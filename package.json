@@ -1,12 +1,12 @@
 {
   "name": "deco-brick",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "A decorator style http server with koa",
   "main": "index.js",
   "scripts": {
     "watch": "tsc --watch",
     "build": "tsc",
-    "test": "mocha",
+    "test": "mocha --require ts-node/register test/*.ts",
     "dev": "nodemon dist/example/index.js"
   },
   "author": {
@@ -26,7 +26,7 @@
     "chalk": "^2.4.1",
     "glob": "^7.1.2",
     "joi": "^14.3.1",
-    "koa": "^2.5.1",
+    "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-multer": "^1.0.2",
     "koa-router": "^7.4.0",
@@ -38,12 +38,14 @@
     "uuid": "^3.2.1"
   },
   "devDependencies": {
+    "@types/chai": "^4.1.7",
     "@types/joi": "^13.0.8",
-    "@types/koa": "^2.0.45",
+    "@types/koa": "^2.0.48",
     "@types/koa-bodyparser": "^4.2.0",
     "@types/koa-router": "^7.0.28",
     "@types/koa-views": "^2.0.3",
     "@types/lodash": "^4.14.109",
+    "@types/mocha": "^5.2.6",
     "@types/node": "^10.14.4",
     "@types/uuid": "^3.4.3",
     "chai": "^4.2.0",

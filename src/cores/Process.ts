@@ -1,11 +1,6 @@
-enum Method {
-  GET = 'get',
-  POST = 'post',
-  PUT = 'put',
-  DEL = 'delete',
-}
+import { Method } from './Method';
 
-declare interface Process {
+export interface Process {
   type: Method;
   path: string;
   validate: object;

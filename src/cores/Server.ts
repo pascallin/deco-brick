@@ -36,7 +36,7 @@ export class BrickServer {
     }
     this.implementControllers();
   }
-  implementControllers (ctrls?: Array<any>) {
+  private implementControllers (ctrls?: Array<any>) {
     if (typeof this.config.controllerPath === 'string') {
       this.config.controllerPath = [ this.config.controllerPath ];
     }
@@ -54,7 +54,7 @@ export class BrickServer {
       require(p);
     }
   }
-  loadRouter () {
+  private loadRouter () {
     const container = ProcessConatiner.getInstance();
     const router = new Router();
     for (const process of container.getProcess()) {

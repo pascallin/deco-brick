@@ -1,3 +1,5 @@
+import { Process } from './Process';
+
 export default class ProcessContaionr {
   private PorcessList: Array<Process> = [];
   private static instance: ProcessContaionr;
