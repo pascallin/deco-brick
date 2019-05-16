@@ -1,5 +1,7 @@
 # deco-brick
 
+[English](https://github.com/pascallin/deco-brick/blob/master/README.md) | [中文](https://github.com/pascallin/deco-brick/blob/master/README_zh.md)
+
 decoration style koa server with typescript
 
 ## Quick start
