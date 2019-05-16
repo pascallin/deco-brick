@@ -34,7 +34,9 @@ class BrickServer {
             }
         }));
         // load views
-        this.koa.use(views(config.viewPath, { map: { html: 'underscore' } }));
+        if (config.viewPath) {
+            this.koa.use(views(config.viewPath, { map: { html: 'underscore' } }));
+        }
         this.implementControllers();
     }
     implementControllers(ctrls) {

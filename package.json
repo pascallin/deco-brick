@@ -4,8 +4,10 @@
   "description": "A decorator style http server with koa",
   "main": "index.js",
   "scripts": {
-    "tsc-watch": "tsc --watch",
-    "test": "mocha"
+    "watch": "tsc --watch",
+    "build": "tsc",
+    "test": "mocha",
+    "dev": "nodemon dist/example/index.js"
   },
   "author": {
     "name": "pascal_lin",

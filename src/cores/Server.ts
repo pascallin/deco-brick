@@ -12,7 +12,7 @@ import bodyParser = require('koa-bodyparser');
 export interface ServerOptions {
   port: number;
   controllerPath: string | Array<string>;
-  viewPath: string;
+  viewPath?: string;
   controllers?: Array<any>;
 }
 
@@ -31,7 +31,9 @@ export class BrickServer {
       }
     }));
     // load views
-    this.koa.use(views(config.viewPath, {map: {html: 'underscore'}}));
+    if (config.viewPath) {
+      this.koa.use(views(config.viewPath, {map: {html: 'underscore'}}));
+    }
     this.implementControllers();
   }
   implementControllers (ctrls?: Array<any>) {
