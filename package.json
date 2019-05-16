@@ -4,7 +4,8 @@
   "description": "A decorator style http server with koa",
   "main": "index.js",
   "scripts": {
-    "tsc-watch": "tsc --watch"
+    "tsc-watch": "tsc --watch",
+    "test": "mocha"
   },
   "author": {
     "name": "pascal_lin",
@@ -35,9 +36,7 @@
     "uuid": "^3.2.1"
   },
   "devDependencies": {
-    "@types/ioredis": "^3.2.8",
     "@types/joi": "^13.0.8",
-    "@types/knex": "^0.14.14",
     "@types/koa": "^2.0.45",
     "@types/koa-bodyparser": "^4.2.0",
     "@types/koa-router": "^7.0.28",
