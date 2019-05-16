@@ -1,10 +1,10 @@
 import log = require('./middlewares/log');
 import errorHandler = require('./middlewares/error-handler');
-
+import path = require('path');
 const session = require('koa-session');
 const cors = require('@koa/cors');
 
-import { BrickServer } from '..';
+import { BrickServer } from '../../src/index';
 
 class App extends BrickServer {
   start() {
@@ -22,9 +22,12 @@ class App extends BrickServer {
 
 const app = new App({
   port: 3000,
-  controllerPath: [ __dirname + '/controllers', __dirname + '/controllers/admin' ],
-  // viewPath: __dirname + '/../../views'
+  controllerPath: [
+    path.join(__dirname, '/controllers'),
+    path.join(__dirname, '/controllers/admin')
+  ],
+  viewPath: path.join(__dirname, '/../views')
 });
-app.start();
+// app.start();
 
 export default app;

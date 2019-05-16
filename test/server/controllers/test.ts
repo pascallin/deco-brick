@@ -1,4 +1,4 @@
-import { GET, POST, PUT, DEL, Validate, Render, BeforeMiddleware, AfterMiddleware } from '../..';
+import { GET, POST, PUT, DEL, Validate, Render, BeforeMiddleware, AfterMiddleware } from '../../../src';
 import Joi = require('joi');
 
 import { m1, m2, m3, m4 } from '../middlewares/middleware';

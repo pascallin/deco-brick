@@ -1,4 +1,4 @@
-import { GET, POST, PUT, DEL, Validate, Render } from '../../..';
+import { GET, POST, PUT, DEL, Validate, Render } from '../../../../src';
 
 export class Controller {
   @GET('/admin/test')
