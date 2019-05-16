@@ -105,7 +105,7 @@ app.start();
 
 ### Controller
 
-一个简单的[控制器示例](https://github.com/pascallin/deco-brick/blob/master/src/example/controllers/test.ts)
+一个简单的控制器示例
 
 ```
 import { GET, POST, PUT, DEL, Validate, Render, BeforeMiddleware, AfterMiddleware } from '../cores/Decorator';

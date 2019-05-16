@@ -107,7 +107,7 @@ Using `BeforeMiddleware` and `AfterMiddleware` decorator hook some middleware in
 
 ### Controller
 
-[A controler demo](https://github.com/pascallin/deco-brick/blob/master/src/example/controllers/test.ts) demo as below:
+A controler demo  demo as below:
 
 ```
 import { GET, POST, PUT, DEL, Validate, Render, BeforeMiddleware, AfterMiddleware } from '../cores/Decorator';
