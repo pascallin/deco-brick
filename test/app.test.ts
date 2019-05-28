@@ -27,6 +27,18 @@ describe('Server', () => {
     });
     expect(result.status).to.equal('success');
   });
+  it('should return params error', async () => {
+    const result = await rp({
+      uri: 'http://localhost:3000/login',
+      method: 'POST',
+      body: {
+        username: 'pascal'
+      },
+      json: true
+    }).catch((e: any) => {
+      expect(e.statusCode).to.equal(422);
+    });
+  });
   after(() => {
     process.exit(0);
   });
