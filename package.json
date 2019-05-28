@@ -1,6 +1,6 @@
 {
   "name": "deco-brick",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A decorator style http server with koa",
   "main": "index.js",
   "scripts": {
