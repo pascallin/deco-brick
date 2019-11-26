@@ -10,11 +10,9 @@
 
 ```
 npm i -g deco-brick-cli
-npm i -g deco-brick-cli
 deco-brick-cli init <project>
-cd <project> && npm i
-tsc
-node <project>/dist/index.js
+cd <project> && yarn
+yarn start:dev
 ```
 
 ## Usage
