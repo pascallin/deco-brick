@@ -6,7 +6,7 @@
   "scripts": {
     "watch": "tsc --watch",
     "build": "tsc",
-    "test": "mocha --require ts-node/register test/*.ts",
+    "test": "mocha --require ts-node/register test/*.test.ts",
     "dev": "ts-node ./test/index.ts"
   },
   "husky": {
