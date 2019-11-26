@@ -1,13 +1,15 @@
 import koa from 'koa';
 import Router = require('koa-router');
-import ProcessConatiner from './ProcessContainer';
-import { validate } from './Middleware';
+import views = require('koa-views');
+import bodyParser = require('koa-bodyparser');
+
 const glob = require('glob');
 const path = require('path');
 const chalk = require('chalk');
+const cors = require('@koa/cors');
 
-import views = require('koa-views');
-import bodyParser = require('koa-bodyparser');
+import ProcessConatiner from './ProcessContainer';
+import { validate } from './Middleware';
 
 export interface ServerOptions {
   port: number;
@@ -22,18 +24,9 @@ export class BrickServer {
   constructor (config: ServerOptions) {
     this.config = config;
     // load body parse
-    this.koa.use(bodyParser({
-      onerror: function (err: Error, ctx: any) {
-        if (err) {
-          ctx.throw(err)
-        }
-        ctx.throw('body parse error', 422);
-      }
-    }));
+    this.useBodyParse();
     // load views
-    if (config.viewPath) {
-      this.koa.use(views(config.viewPath, {map: {html: 'underscore'}}));
-    }
+    this.useView();
     this.implementControllers();
   }
   private implementControllers (ctrls?: Array<any>) {
@@ -59,13 +52,22 @@ export class BrickServer {
     const router = new Router();
     for (const process of container.getProcess()) {
       const { type, path, action, target, view } = process;
+
+      // load before middlewares
       let beforeMiddlewares = process.beforeMiddlewares || [];
       beforeMiddlewares = beforeMiddlewares.reverse();
+
+      // load after middlewares
       let afterMiddlewares = process.afterMiddlewares || [];
       afterMiddlewares = afterMiddlewares.reverse();
+
+      // load router
       router[type](path,
+        // setting validate
         validate(process.validate),
+        // setting before middlewares
         ...beforeMiddlewares,
+        // setting controller
         async (ctx: any, next: any) => {
           const data = await new target()[action](ctx);
           if (view) {
@@ -75,9 +77,29 @@ export class BrickServer {
           }
           await next();
         },
+        // setting after middlewares
         ...afterMiddlewares);
     }
+
     this.koa.use(router.routes()).use(router.allowedMethods());
+  }
+  useCors() {
+    this.koa.use(cors());
+  }
+  useBodyParse() {
+    this.koa.use(bodyParser({
+      onerror: function (err: Error, ctx: any) {
+        if (err) {
+          ctx.throw(err);
+        }
+        ctx.throw('body parse error', 422);
+      }
+    }));
+  }
+  useView() {
+    if (this.config.viewPath) {
+      this.koa.use(views(this.config.viewPath, {map: {html: 'underscore'}}));
+    }
   }
   start () {
     this.loadRouter();

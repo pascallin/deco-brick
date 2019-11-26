@@ -1,5 +1,4 @@
 const fs        = require('fs');
-const crypto    = require('crypto');
 
 function isJsFile(filename: string): boolean {
   const str = filename.split('/').pop();
@@ -29,8 +28,4 @@ export function recursiveDir(path: string, files?: string[]) {
     }
   }
   return files;
-}
-
-export function md5(msg: string) {
-  return crypto.createHash('md5').update(msg).digest('hex');
 }

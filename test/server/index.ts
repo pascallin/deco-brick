@@ -28,6 +28,5 @@ const app = new App({
   ],
   viewPath: path.join(__dirname, '/../views')
 });
-// app.start();
 
 export default app;
