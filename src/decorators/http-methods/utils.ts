@@ -1,5 +1,5 @@
 import { Method } from '../../types/Method';
-import ProcessConatiner from '../../core/ProcessContainer';
+import ProcessConatiner from '../../ProcessContainer';
 import { methodMetadataKey } from '../../meta';
 
 export function implementProcess(method: Method, path: string, target: any, propertyKey: string, descriptor: PropertyDescriptor) {

@@ -1,4 +1,4 @@
-import { Method } from '../types/Method';
+import { Method } from './Method';
 
 export interface Process {
   type: Method;

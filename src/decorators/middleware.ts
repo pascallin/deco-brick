@@ -1,4 +1,4 @@
-import ProcessConatiner from '../core/ProcessContainer';
+import ProcessConatiner from '../ProcessContainer';
 import { pathMetadataKey } from '../meta';
 
 export function BeforeMiddleware(func: (ctx: any, next: Function) => any) {
