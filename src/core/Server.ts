@@ -9,14 +9,9 @@ const chalk = require('chalk');
 const cors = require('@koa/cors');
 
 import ProcessConatiner from './ProcessContainer';
-import { validate } from './Middleware';
+import { validate } from '../koa-middlewares';
 
-export interface ServerOptions {
-  port: number;
-  controllerPath: string | Array<string>;
-  viewPath?: string;
-  controllers?: Array<any>;
-}
+import { ServerOptions } from '../types/ServerOptions';
 
 export class BrickServer {
   protected koa: any = new koa();

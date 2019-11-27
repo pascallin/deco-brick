@@ -51,7 +51,6 @@ import errorHandler = require('./middlewares/error-handler');
 import bodyParser = require('koa-bodyparser');
 
 const session = require('koa-session');
-const cors = require('@koa/cors');
 
 import { BrickServer } from 'deco-brick';
 
@@ -64,7 +63,7 @@ class App extends BrickServer {
 		}
 	}));
 	// load cors
-	this.koa.use(cors());
+	this.useCors();
 	// load session
 	this.koa.keys = [ 'secret-shhh' ];
 	this.koa.use(session(this.koa));
@@ -91,7 +90,7 @@ app.start();
 
 #### Validate
 
-基于Joi封装的装饰器，*注意，ctx.params、ctx.request.query、ctx.request.body经过此装饰器后，都会合并到ctx.params，需要避免变量重名的情况出现*
+基于`joi`封装的装饰器，*注意，ctx.params、ctx.request.query、ctx.request.body经过此装饰器后，都会合并到ctx.params，需要避免变量重名的情况出现*
 
 #### Render
 
