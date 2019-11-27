@@ -28,7 +28,7 @@ export class BrickServer {
     if (typeof this.config.controllerPath === 'string') {
       this.config.controllerPath = [ this.config.controllerPath ];
     }
-    let ctrlsPath: string[] = [];
+    let ctrlsPaths: string[] = [];
     for (const groupPath of this.config.controllerPath) {
       const ctrls = glob.sync(
         path.normalize(groupPath + '/*{.js,.ts}'))
@@ -36,10 +36,10 @@ export class BrickServer {
           const dtsExtension = file.substring(file.length - 5, file.length);
           return ['.js', '.ts'].indexOf(path.extname(file)) !== -1 && dtsExtension !== '.d.ts';
         });
-        ctrlsPath = ctrlsPath.concat(ctrls);
+        ctrlsPaths = ctrlsPaths.concat(ctrls);
     }
-    for (const p of ctrlsPath) {
-      require(p);
+    for (const ctrlsPath of ctrlsPaths) {
+      require(ctrlsPath);
     }
   }
   private loadRouter () {
