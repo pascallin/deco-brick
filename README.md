@@ -51,7 +51,6 @@ import errorHandler = require('./middlewares/error-handler');
 import bodyParser = require('koa-bodyparser');
 
 const session = require('koa-session');
-const cors = require('@koa/cors');
 
 import { BrickServer } from 'deco-brick';
 
@@ -64,7 +63,7 @@ class App extends BrickServer {
 		}
 	}));
 	// load cors
-	this.koa.use(cors());
+	this.useCors();
 	// load session
 	this.koa.keys = [ 'secret-shhh' ];
 	this.koa.use(session(this.koa));

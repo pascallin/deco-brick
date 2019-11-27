@@ -1,2 +1,4 @@
-export * from './cores/Decorator';
-export * from './cores/Server';
+import 'reflect-metadata';
+
+export * from './decorators';
+export * from './core/Server';
