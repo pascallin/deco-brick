@@ -1,4 +1,4 @@
-import { Process } from './Process';
+import { Process } from './types/Process';
 
 export default class ProcessContaionr {
   private PorcessList: Array<Process> = [];

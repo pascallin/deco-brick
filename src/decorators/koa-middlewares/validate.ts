@@ -1,4 +1,4 @@
-import ProcessConatiner from '../../core/ProcessContainer';
+import ProcessConatiner from '../../ProcessContainer';
 import { pathMetadataKey, methodMetadataKey } from '../../meta';
 
 export function Validate(schema: object) {
