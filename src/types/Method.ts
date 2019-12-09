@@ -3,4 +3,5 @@ export enum Method {
     POST = 'post',
     PUT = 'put',
     DEL = 'delete',
+    PATCH = 'patch'
 }
