@@ -1,8 +1,9 @@
-import { GET, POST, PUT, DEL, Validate, Render } from '../../../../src';
+import { GET } from '../../../../src';
+import { Context } from 'koa';
 
 export class Controller {
-  @GET('/admin/test')
-  async test(ctx: any) {
-    return { message: 'here is admin' };
-  }
+    @GET('/admin/test')
+    async test(ctx: Context) {
+        return { message: 'here is admin' };
+    }
 }

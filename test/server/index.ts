@@ -20,7 +20,7 @@ class App extends BrickServer {
 }
 
 const app = new App({
-  port: 6001,
+  port: 7001,
   controllerPath: [
     path.join(__dirname, '/controllers'),
     path.join(__dirname, '/controllers/admin')
