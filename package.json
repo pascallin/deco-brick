@@ -1,12 +1,28 @@
 {
-  "name": "deco-brick",
+  "name": "@pascallin/deco-brick",
   "version": "0.3.8",
   "description": "A decorator style http server with koa",
+  "author": {
+    "name": "pascal_lin",
+    "email": "pascal_lin@foxmail.com"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:pascallin/deco-brick.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "bugs": {
+    "url": "https://github.com/pascallin/brick.git/issues"
+  },
   "main": "index.js",
   "scripts": {
     "watch": "tsc --watch",
     "build": "tsc -p tsconfig.json",
-    "test": "mocha --require ts-node/register test/*.test.ts",
+    "test": "echo 'no testing now'",
+    "test:mocha": "mocha --require ts-node/register test/*.test.ts",
     "dev": "ts-node ./test/index.ts",
     "copy": "cp package.json dist/ && cp README.md dist/ && cp README_zh.md dist/ && cp .npmrc dist/",
     "release": "npm run build && npm run copy"
@@ -16,18 +32,6 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "npm test"
     }
-  },
-  "author": {
-    "name": "pascal_lin",
-    "email": "pascal_lin@foxmail.com"
-  },
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/pascallin/brick.git"
-  },
-  "bugs": {
-    "url": "https://github.com/pascallin/brick.git/issues"
   },
   "dependencies": {
     "@hapi/joi": "^16.1.8",
